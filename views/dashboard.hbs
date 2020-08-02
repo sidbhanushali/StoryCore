@@ -1,0 +1,48 @@
+<div class="card publicStoryTitle">
+<span><h2>{{name}}'s Story Dashboard </h2>
+<h3>Welcome {{name}}!</h3>
+<p>Here are your stories</p>
+</span>
+</div>
+{{#if stories}}
+<section class="card" style="padding: 10px!important; margin: 10px 0rem !important;">
+
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each stories}}
+            {{!-- No need to do stories.title,_id, etc. because in EXPHBS syntax we are in the forEach loop for stories --}}
+            <tr class="hover-grow">
+                <td><a href="/stories/{{_id}}">{{truncate title 80}}</a></td>
+                <td>{{ formatDate createdAt 'MMMM Do YYYY, h:mm:ss a' }}</td>
+                <td><span class="dash-status">{{status}}</span></td>
+                <td>
+                    <a href="/stories/edit/{{_id}}" class="btn editButton">
+                        <i class="fas fa-edit"></i>
+                    </a>
+
+                    <form action="/stories/{{_id}}" method="POST" id="delete-form">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn red">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</section>
+{{else}}
+<div class="card publicStoryTitle">
+<h5> 😓 You don't have any stories! 😓 <br> To create a new story, click the big red + button on the bottom right of your screen ↘ </h5>
+</div>
+{{/if}}
