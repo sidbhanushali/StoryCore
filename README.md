@@ -47,7 +47,9 @@ A fully Node.js social media CRUD application for making your own stories or jou
 
 ## App demo 
 
-SCREENSHOT HERE.
+![App-demo](https://raw.githubusercontent.com/sidbhanushali/StoryCore/master/storycore.gif)
+
+
 
 ## **Run App Locally - Env vars**
 
